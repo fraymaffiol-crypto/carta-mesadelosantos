@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<meta name="theme-color" content="#f3e7d3" />
+<meta name="description" content="Carta digital de Colombianísimo Mesa de Los Santos — cocina santandereana, parrilla y comida típica colombiana. Nuestra carne es 100% nacional." />
+<title>Colombianísimo Mesa de Los Santos · Carta Digital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Zilla+Slab:ital,wght@0,500;0,600;0,700;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Sede Mesa de Los Santos: paleta invertida respecto a Piedecuesta */
+  --paper:#3b1f0a;      /* fondo de la carta (café) */
+  --paper-2:#4a2810;    /* barra de categorías */
+  --card:#46260e;
+  --ink:#f6ecd9;        /* texto principal (crema) */
+  --ink-soft:#dcc7a6;
+  --coffee:#f3e7d3;     /* bloques de marca: encabezado, portada, pie (crema) */
+  --coffee-2:#eadbc2;
+  --on-brand:#3b1f0a;   /* texto sobre crema */
+  --brown:#f0dcbc;      /* títulos de sección */
+  --brown-2:#d9b483;
+  --gold:#d9b483;
+  --brand-accent:#8a5a2b;
+  --cream:#f6ecd9;
+  --line:#7a5330;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"EB Garamond",Georgia,serif;
+  font-size:17px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* textura de papel */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.22;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  mix-blend-mode:soft-light;
+}
+.wrap{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ---------- cenefa guane ---------- */
+.cenefa{height:22px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='22' viewBox='0 0 48 22'%3E%3Cg fill='none' stroke='%23d9b483' stroke-width='1.6'%3E%3Cpath d='M0 11 L12 2 L24 11 L36 2 L48 11'/%3E%3Cpath d='M0 11 L12 20 L24 11 L36 20 L48 11'/%3E%3Cpath d='M12 2 L12 20 M36 2 L36 20'/%3E%3C/g%3E%3Cg fill='%23d9b483'%3E%3Ccircle cx='24' cy='11' r='1.5'/%3E%3Ccircle cx='0' cy='11' r='1.5'/%3E%3Ccircle cx='48' cy='11' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat-x;background-position:center;background-size:auto 22px;opacity:.85}
+.cenefa.on-coffee{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='22' viewBox='0 0 48 22'%3E%3Cg fill='none' stroke='%237a4a22' stroke-width='1.6'%3E%3Cpath d='M0 11 L12 2 L24 11 L36 2 L48 11'/%3E%3Cpath d='M0 11 L12 20 L24 11 L36 20 L48 11'/%3E%3Cpath d='M12 2 L12 20 M36 2 L36 20'/%3E%3C/g%3E%3Cg fill='%237a4a22'%3E%3Ccircle cx='24' cy='11' r='1.5'/%3E%3Ccircle cx='0' cy='11' r='1.5'/%3E%3Ccircle cx='48' cy='11' r='1.5'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* ---------- header ---------- */
+header.top{position:sticky;top:0;z-index:40;background:var(--coffee);color:var(--on-brand);box-shadow:0 2px 14px rgba(0,0,0,.35)}
+.top-inner{max-width:1120px;margin:0 auto;padding:11px 20px;display:flex;align-items:center;gap:14px}
+.brand{font-family:"Cinzel",serif;font-weight:600;letter-spacing:.18em;font-size:clamp(15px,3.4vw,20px);color:var(--on-brand);white-space:nowrap;text-decoration:none}
+.brand small{display:block;font-family:"Zilla Slab",serif;font-weight:500;letter-spacing:.34em;font-size:9px;color:var(--brand-accent);margin-top:1px}
+
+/* ---------- chips ---------- */
+nav.chips{position:sticky;top:56px;z-index:35;background:var(--paper-2);border-bottom:1px solid var(--line)}
+.chips-scroll{max-width:1120px;margin:0 auto;display:flex;gap:8px;padding:9px 16px;overflow-x:auto;scrollbar-width:none}
+.chips-scroll::-webkit-scrollbar{display:none}
+.chip{flex:none;font-family:"Zilla Slab",serif;font-weight:600;font-size:13px;letter-spacing:.03em;text-transform:uppercase;color:var(--brown);background:transparent;border:1.5px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer;white-space:nowrap;transition:.18s;text-decoration:none}
+.chip:hover{border-color:var(--cream);color:var(--cream)}
+.chip.active{background:var(--cream);border-color:var(--cream);color:var(--paper)}
+
+/* ---------- hero ---------- */
+.hero{background:var(--coffee);color:var(--on-brand);position:relative;overflow:hidden}
+.hero-body{max-width:1120px;margin:0 auto;padding:38px 20px 46px;text-align:center}
+.emblem{width:min(46%,180px);height:auto;display:block;margin:6px auto 22px;}
+.wordmark{width:min(82%,380px);height:auto;display:block;margin:0 auto 18px}
+.hero h1{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.30em;font-size:clamp(34px,7.5vw,56px);margin:6px 0 2px;padding-left:.3em}
+.hero .sub{font-family:"Zilla Slab",serif;font-weight:600;letter-spacing:.42em;font-size:clamp(13px,3vw,17px);color:var(--brand-accent);text-transform:uppercase;margin:4px 0 0;padding-left:.42em}
+.hero .tagline{font-family:"EB Garamond",serif;font-style:italic;font-size:15px;color:#6b4a30;max-width:420px;margin:12px auto 0;letter-spacing:.04em}
+.hero .flag{display:inline-flex;gap:5px;margin-top:20px}
+.hero .flag span{width:26px;height:6px;border-radius:2px}
+.hero .days{display:inline-block;margin-top:18px;font-family:"Zilla Slab",serif;font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--on-brand);border:1.5px solid var(--brand-accent);border-radius:999px;padding:5px 14px}
+
+/* ---------- historia ---------- */
+.historia{background:var(--paper);padding:34px 0 10px}
+details.story{max-width:840px;margin:0 auto;border:1px solid var(--line);border-radius:4px;background:var(--card);overflow:hidden}
+details.story summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;align-items:center;gap:14px}
+details.story summary::-webkit-details-marker{display:none}
+.story-title{font-family:"Zilla Slab",serif;font-weight:700;font-size:clamp(16px,3.2vw,20px);color:var(--brown);line-height:1.25;text-transform:uppercase;letter-spacing:.02em}
+.story-caret{margin-left:auto;flex:none;width:22px;height:22px;stroke:var(--brown);fill:none;stroke-width:2.2;transition:transform .25s}
+details.story[open] .story-caret{transform:rotate(180deg)}
+.story-body{padding:2px 26px 26px;color:var(--ink-soft);font-size:16.5px}
+.story-body p{margin:0 0 14px}
+.story-body p:first-child::first-letter{font-family:"Cinzel",serif;font-size:3.1em;float:left;line-height:.8;padding:6px 10px 0 0;color:var(--brown);font-weight:700}
+
+/* ---------- secciones ---------- */
+.section{padding:30px 0 6px;scroll-margin-top:104px}
+.sec-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+.sec-head h2{font-family:"Zilla Slab",serif;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:var(--brown);font-size:clamp(28px,6.4vw,44px);line-height:1;margin:0}
+.sec-head .en{font-family:"EB Garamond",serif;font-style:italic;font-size:clamp(15px,3vw,19px);color:var(--brown-2);letter-spacing:.06em}
+.sec-head.mini h2{font-size:clamp(22px,5vw,32px)}
+.divider{display:flex;align-items:center;gap:14px;margin:18px 0 4px}
+.divider .cenefa{flex:1}
+
+.grid{display:grid;grid-template-columns:1fr;gap:22px 40px;margin-top:20px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:980px){.grid.three{grid-template-columns:1fr 1fr 1fr}}
+
+.item{position:relative}
+.item-head{display:flex;align-items:baseline;gap:10px}
+.item-name{font-family:"Zilla Slab",serif;font-weight:600;font-size:17.5px;color:var(--ink);margin:0;line-height:1.2}
+.item-name .tag{font-style:italic;font-weight:500;font-size:13px;color:var(--brown-2);font-family:"EB Garamond",serif}
+.dots{flex:1;border-bottom:1.5px dotted var(--line);transform:translateY(-4px);min-width:14px}
+.price{flex:none;font-family:"Zilla Slab",serif;font-weight:600;font-size:14.5px;color:var(--brown);border:1.5px solid var(--brown);border-radius:5px;padding:2px 9px;white-space:nowrap;background:rgba(0,0,0,.18)}
+.item-desc{margin:5px 0 0;color:var(--ink-soft);font-size:15.5px;line-height:1.42;max-width:46ch}
+.variants{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.variant{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-family:"Zilla Slab",serif;font-weight:500;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+.variant b{color:var(--brown);font-weight:600}
+
+/* adicionales */
+.compact{display:grid;grid-template-columns:1fr 1fr;gap:9px 30px;margin-top:18px}
+@media(min-width:760px){.compact{grid-template-columns:1fr 1fr 1fr}}
+.crow{display:flex;align-items:baseline;gap:8px}
+.crow .n{font-family:"Zilla Slab",serif;font-weight:500;font-size:15.5px;color:var(--ink)}
+.crow .d{flex:1;border-bottom:1.5px dotted var(--line);transform:translateY(-4px)}
+.crow .p{font-family:"Zilla Slab",serif;font-weight:600;font-size:14px;color:var(--brown)}
+
+/* bebidas */
+.bev-groups{display:grid;grid-template-columns:1fr;gap:26px 40px;margin-top:20px}
+@media(min-width:700px){.bev-groups{grid-template-columns:1fr 1fr}}
+.bev-group h3{font-family:"Zilla Slab",serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:15px;color:var(--brown-2);margin:0 0 10px;padding-bottom:6px;border-bottom:1.5px solid var(--line)}
+.bev-row{display:flex;align-items:baseline;gap:8px;margin:0 0 9px}
+.bev-row .bn{font-family:"EB Garamond",serif;font-weight:500;font-size:16px;color:var(--ink)}
+.bev-row .bn small{display:block;font-style:italic;font-size:13px;color:var(--ink-soft);font-weight:400}
+.bev-row .bd{flex:1;border-bottom:1.5px dotted var(--line);transform:translateY(-4px);min-width:12px}
+.bev-row .bp{font-family:"Zilla Slab",serif;font-weight:600;font-size:14px;color:var(--brown);white-space:nowrap}
+
+/* frases */
+.quote{font-family:"EB Garamond",serif;font-style:italic;font-size:clamp(19px,4vw,26px);color:var(--brown-2);line-height:1.3;max-width:520px;margin:26px 0 6px}
+.quote b{font-style:normal;font-weight:700;color:var(--cream)}
+.quote .ag:before{content:"“"}.quote .ag:after{content:"”"}
+
+/* info */
+.info{background:var(--coffee);color:var(--on-brand);margin-top:40px}
+.info-body{max-width:1120px;margin:0 auto;padding:38px 20px 40px;display:grid;gap:30px}
+@media(min-width:760px){.info-body{grid-template-columns:1.1fr 1fr 1fr}}
+.info h3{font-family:"Zilla Slab",serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:16px;color:var(--brand-accent);margin:0 0 12px}
+.info p{margin:0 0 5px;color:#5a3a22;font-size:16px}
+.info .big{font-family:"Zilla Slab",serif;font-weight:600;color:var(--on-brand);font-size:18px}
+.socials{display:flex;gap:12px;margin-top:6px}
+.socials a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1.5px solid var(--brand-accent);border-radius:50%;color:var(--on-brand);transition:.18s}
+.socials a:hover{background:var(--on-brand);color:var(--coffee)}
+.socials svg{width:20px;height:20px;fill:currentColor}
+.foot-brand{text-align:center;padding:22px 20px 30px;background:var(--coffee-2)}
+.foot-brand .fb{font-family:"Cinzel",serif;letter-spacing:.22em;color:var(--on-brand);font-size:18px;font-weight:600}
+.foot-brand .fn{font-family:"EB Garamond",serif;font-style:italic;color:var(--brand-accent);font-size:13.5px;margin-top:6px}
+
+/* botón WhatsApp */
+.wsp{position:fixed;right:16px;bottom:16px;z-index:50;display:inline-flex;align-items:center;gap:9px;background:#128C7E;color:#fff;text-decoration:none;padding:12px 17px;border-radius:999px;font-family:"Zilla Slab",serif;font-weight:600;font-size:15px;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.wsp svg{width:22px;height:22px;fill:#fff}
+.wsp span{display:none}
+@media(min-width:520px){.wsp span{display:inline}}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="#inicio" class="brand">COLOMBIANÍSIMO<small>MESA DE LOS SANTOS</small></a>
+  </div>
+</header>
+
+<nav class="chips" aria-label="Categorías">
+  <div class="chips-scroll" id="chips"></div>
+</nav>
+
+<!-- HERO -->
+<div class="cenefa on-coffee" style="background-color:var(--coffee)"></div>
+<section class="hero" id="inicio">
+  <div class="hero-body">
+    <img class="emblem" src="emblem.webp" alt="El campesino Don Elí y el cabro Milagro" width="360" height="451" />
+    <img class="wordmark" src="wordmark.webp" alt="Colombianísimo" width="700" height="72" />
+    <h1>MENÚ</h1>
+    <p class="sub">Mesa de Los Santos</p>
+    <p class="tagline">Nuestra carne es 100% nacional — apoyando la industria colombiana.</p>
+    <div class="flag" aria-hidden="true">
+      <span style="background:#f2c14e"></span><span style="background:#2f6fb0"></span><span style="background:#b3402f"></span>
+    </div>
+    <div><span class="days">Vie · Sáb · Dom y festivos</span></div>
+  </div>
+</section>
+<div class="cenefa on-coffee" style="background-color:var(--coffee)"></div>
+
+<!-- HISTORIA -->
+<div class="historia">
+  <div class="wrap">
+    <details class="story">
+      <summary>
+        <span class="story-title">Antes que elija lo que le va a echar al buche,<br>venga mano y le echo una historia</span>
+        <svg class="story-caret" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="story-body">
+        <p>En lo alto de las montañas de Los Santos, Santander, vivía Don Elí junto a su esposa. Un hombre con raíces profundas y una descendencia guane que corría por sus venas. Los habitantes le apodaban “El Colombianísimo”, no solo por su amor a la tierra y a las costumbres santandereanas, sino porque encarnaba el espíritu del verdadero campesino colombiano. Se le veía caminar con su fiel compañero, un cabro llamado Milagro, que a pesar de ser rebelde y testarudo, lo seguía en todas sus jornadas como un guardián leal.</p>
+        <p>El viejo Elí era un guardián de las tradiciones culinarias guanes que le habían sido transmitidas por sus ancestros, llegando a dar con recetas únicas: la carne oreada, las arepas de maíz pelao, el mute santandereano, la pepitoria y el cabro.</p>
+        <p>Se decía que el espíritu de sus ancestros estaba presente en cada bocado. Los domingos, mientras sus nietos, vecinos y amigos se reunían alrededor de su mesa con guarapo en mano, don Elí compartía relatos de las montañas, de las hazañas de los Guane y de cómo el cabro Milagro lo había salvado de más de una travesura en sus caminatas por los cerros.</p>
+        <p>Cuando el viejo Elí murió, su ausencia dejó un vacío en el corazón de muchos; sin embargo, su legado estaba lejos de desvanecerse. Inspirados por su sabiduría y deseosos de mantener viva su memoria, sus nietos decidieron abrir Colombianísimo, un restaurante que no solo serviría sus recetas, sino que también contaría las historias que él había narrado durante tantos años. Hoy, cada plato es un viaje a las raíces guanes, una experiencia que combina el sabor de las tierras santandereanas con el calor de las historias contadas alrededor del fogón. En cada esquina del restaurante, la esencia de don Elí, de Milagro su fiel cabro y de su esposa siguen vivas, recordándonos que la verdadera riqueza de la comida no está solo en los ingredientes, sino en la historia, el amor y las raíces que la acompañan.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<main class="wrap" id="menu"></main>
+
+<!-- INFO -->
+<div class="info" id="info">
+  <div class="cenefa on-coffee" style="background-color:var(--coffee)"></div>
+  <div class="info-body">
+    <div>
+      <h3>Horarios</h3>
+      <p class="big">Viernes, sábados, domingos y festivos</p>
+      <p>8:00 a.m. – 5:00 p.m.</p>
+    </div>
+    <div>
+      <h3>Medios de pago</h3>
+      <p>Efectivo</p>
+      <p>Nequi</p>
+      <p>Cuenta bancaria</p>
+    </div>
+    <div>
+      <h3>¡Oiga mano! Síganos</h3>
+      <p>Colombianísimo Mesa de Los Santos</p>
+      <div class="socials">
+        <a id="ig" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.4.4-.8.7-1.4.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.4-.4-.7-.8-.9-1.4-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.06-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 8.5 2.6 8.9 2.6 12s0 3.5.06 4.7c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.06 1.6.06 4.7.06s3.5 0 4.7-.06c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.06-1.2.06-1.6.06-4.7s0-3.5-.06-4.7c-.05-1.1-.24-1.7-.4-2.1-.2-.5-.44-.9-.84-1.3-.4-.4-.8-.64-1.3-.84-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.06A4.94 4.94 0 1 0 12 17a4.94 4.94 0 0 0 0-9.88zm0 8.14A3.2 3.2 0 1 1 12 8.8a3.2 3.2 0 0 1 0 6.4zm5.13-8.34a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg>
+        </a>
+        <a id="tt" href="#" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M16.6 5.8a4.3 4.3 0 0 1-1-2.8h-3v11.6a2.5 2.5 0 1 1-2.1-2.5V9a5.5 5.5 0 1 0 5.2 5.5V9.3a7.3 7.3 0 0 0 4.3 1.4V7.7a4.3 4.3 0 0 1-3.4-1.9z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-brand">
+    <div class="fb">COLOMBIANÍSIMO</div>
+    <div class="fn">Tan colombianísimo como la yuca con ají.</div>
+  </div>
+</div>
+
+<a class="wsp" id="wsp" href="#" target="_blank" rel="noopener" aria-label="Pedir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.06 24l1.7-6.16A11.87 11.87 0 0 1 .16 11.9C.16 5.34 5.5 0 12.06 0a11.8 11.8 0 0 1 8.4 3.5 11.8 11.8 0 0 1 3.48 8.4c0 6.56-5.34 11.9-11.9 11.9a11.9 11.9 0 0 1-5.7-1.45L.06 24zM6.6 20.13c1.68 1 3.28 1.6 5.4 1.6 5.45 0 9.9-4.44 9.9-9.9 0-5.46-4.4-9.9-9.9-9.9-5.46 0-9.9 4.44-9.9 9.9 0 2.2.64 3.85 1.72 5.58l-1 3.65 3.78-.93zM17.5 14.6c-.07-.12-.27-.2-.56-.34-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.63.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.14.3-.34.44-.5.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.57-.48-.5-.66-.5l-.56-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.5.7.3 1.26.48 1.7.62.7.22 1.35.2 1.86.12.57-.08 1.76-.72 2-1.4.25-.7.25-1.28.17-1.4z"/></svg>
+  <span>Pedir por WhatsApp</span>
+</a>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN RÁPIDA — edita solo estas líneas
+   ============================================================ */
+const CONFIG = {
+  // WhatsApp de pedidos de la sede Mesa de Los Santos.
+  // (Por ahora apunta al mismo enlace de Piedecuesta; cámbialo si la sede tiene número propio.)
+  whatsappUrl: "https://wa.link/w9mzp8",
+  instagram:  "https://www.instagram.com/colombianisimo_sto",
+  tiktok:     "https://www.tiktok.com/@colombianisimo_sto"
+};
+
+/* ============================================================
+   DATOS DE LA CARTA — Mesa de Los Santos (2.º semestre 2026)
+   Edita platos y precios aquí.
+   ============================================================ */
+const MENU = [
+  { id:"desayunos", title:"Desayunos", en:"Breakfast", items:[
+    {n:"Caldo de huevo", d:"Arepa amarilla y bebida caliente (chocolate, café en leche o café).", p:"$19.900"},
+    {n:"Caldo de carne", d:"Arepa amarilla y bebida caliente (chocolate, café en leche o café).", p:"$22.900"},
+    {n:"Calentado santandereano", d:"Carne oreada en tiras, huevo frito y arepa amarilla.", p:"$30.900"},
+    {n:"Santandereano", d:"Caldo de huevo, carne asada, arepa amarilla, yuca al vapor y bebida caliente.", p:"$33.900"},
+    {n:"Huevos al gusto", d:"Revueltos, rancheros, fritos o pericos.", p:"$17.900"},
+    {n:"Café Don Elí", d:"Café de especialidad, marca propia Don Elí Café.", p:"$5.000"},
+    {n:"Café Don Elí en bolsa", d:"Elige la molienda a tu gusto y la presentación que prefieras.", vars:[
+      {l:"250 gr", p:"$26.900"},{l:"340 gr", p:"$39.900"},{l:"500 gr", p:"$49.900"}]},
+  ]},
+
+  { id:"entradas", title:"Entradas", en:"Entrées", items:[
+    {n:"Chorizos acaramelados", tag:"(3 unidades)", d:"Chorizo artesanal en reducción de panela.", p:"$22.900"},
+    {n:"Mazorca con queso costeño", d:"Mazorca sin desgranar en salsa tártara de la casa y queso costeño.", p:"$16.900"},
+    {n:"Maduro, queso y bocadillo", d:"Plátano maduro asado con queso y bocadillo.", p:"$16.900"},
+    {n:"Panceta de cerdo al barril", d:"Panceta de cerdo (300 gr) al barril, acompañada de papa criolla.", p:"$32.900"},
+  ]},
+
+  { id:"tipicos", title:"Típicos", en:"De mi tierra · Typical", items:[
+    {n:"Mute santandereano completo", d:"Mute acompañado con carne fresca (120 gr), yuca al vapor y arepa amarilla.", p:"$41.900"},
+    {n:"Sopa de mute / Arroz blanco", d:"Mute santandereano acompañado de arroz blanco, yuca y arepa amarilla.", p:"$29.900"},
+    {n:"Mutesito / Arroz blanco", d:"Mute pequeño acompañado de arroz blanco, yuca al vapor y arepa amarilla.", p:"$21.900"},
+    {n:"Sobrebarriga asada", d:"Sobrebarriga asada con arroz de pepitoria, yuca al vapor y arepa amarilla.", p:"$48.900"},
+    {n:"Carne oreada", d:"Deliciosa carne oreada con arroz de pepitoria, yuca al vapor y arepa amarilla.", p:"$53.900"},
+    {n:"Cabrito asado", d:"Cabrito santandereano (pierna y costilla) con arroz de pepitoria, yuca al vapor y arepa amarilla.", p:"$53.900"},
+    {n:"Delicias de mi Santander", d:"Combinación entre carne oreada (150 gr) y cabrito santandereano (150 gr) con arroz de pepitoria, yuca al vapor y arepa amarilla.", p:"$57.900"},
+    {n:"Bandeja paisa con toque santandereano", d:"Fríjoles, arroz blanco, carne molida, panceta de cerdo al barril, chorizo artesanal, huevo frito, maduro, aguacate y arepa amarilla.", p:"$60.900"},
+    {n:"Mini paisa", d:"Fríjoles, arroz blanco, carne molida, panceta de cerdo al barril, chorizo artesanal, huevo frito, maduro, aguacate y arepa amarilla.", p:"$43.900"},
+  ]},
+
+  { id:"parrilla", title:"Parrilla", en:"Grill",
+    quote:"<span class='ag'>Tan <b>colombianísimo</b> como refajo con guarapo</span>",
+    items:[
+    {n:"Baby beef bistec a caballo", d:"Baby beef (250 gr), corte blando en bistec con dos huevos fritos, arepa amarilla y yuca al vapor.", p:"$66.900"},
+    {n:"Entraña de res", d:"Entraña (400 gr) con grasa extramuscular; se recomienda término 3/4 o medio. Con yuca al vapor y arepa amarilla.", p:"$49.900"},
+    {n:"Carne fresca", d:"Carne fresca (400 gr) de res con yuca al vapor y arepa amarilla santandereana.", p:"$49.900"},
+    {n:"Combinadito", d:"Carne oreada 150 gr, sobrebarriga 150 gr y chorizo cóctel, con yuca al vapor y arepa amarilla.", p:"$61.900"},
+    {n:"Punta de anca", d:"Punta de anca o picaña (300 gr) con arepa amarilla santandereana y yuca al vapor.", p:"$61.900"},
+    {n:"Lomo de cerdo", d:"Lomo de cerdo (400 gr) con arepa amarilla santandereana y yuca al vapor.", p:"$44.900"},
+    {n:"Chata", d:"Chata o churrasco (300 gr) con arepa amarilla santandereana y yuca al vapor.", p:"$55.900"},
+    {n:"Pechuga", d:"Pechuga de pollo al carbón (300 gr) con arepa amarilla y yuca al vapor.", p:"$41.900"},
+    {n:"Baby beef", d:"Baby beef (250 gr) con arepa amarilla santandereana y yuca al vapor.", p:"$57.900"},
+  ]},
+
+  { id:"picadas", title:"Picadas", en:"Para compartir", items:[
+    {n:"Parrillada mi Santander", tag:"(2 personas)", d:"Pechuga, lomo de cerdo, carne de res, chorizo y rellena (600 gr aprox.), pepitoria, papa criolla y yuca.", p:"$94.900"},
+    {n:"Parrillada mi Colombia", tag:"(4 personas)", d:"Cabrito asado, carne oreada, carne fresca, pechuga y chorizo (1.200 gr aprox.), pepitoria, papa criolla y yuca al vapor.", p:"$159.900"},
+  ]},
+
+  { id:"pescados", title:"Pescados", en:"Fish",
+    quote:"<span class='ag'>De eso tan bueno <b>sí dan tanto</b></span>",
+    items:[
+    {n:"Salmón en salsa camaronera", d:"Salmón (300 gr) fresco en salsa de camarones, con arroz de coco, ensalada de aguacate y patacones.", p:"$67.900"},
+    {n:"Salmón a la plancha", d:"Salmón (300 gr) fresco a la plancha, con arroz de coco, ensalada, aguacate y patacones.", p:"$55.900"},
+    {n:"Trucha al ajillo", d:"Trucha de río (500 gr) al ajillo de la casa, con arroz de coco, ensalada de aguacate y patacones.", p:"$46.900"},
+    {n:"Trucha en salsa camaronera", d:"Trucha de río (500 gr) en salsa de camarones, con arroz de coco, ensalada de aguacate y patacones.", p:"$55.900"},
+    {n:"Mojarra frita", d:"Mojarra roja frita (500 gr), con arroz de coco, ensalada de aguacate y patacones.", p:"$49.900"},
+  ]},
+
+  { id:"vegetariano", title:"Vegetariano", en:"Vegetarian", items:[
+    {n:"Arroz salteado con champiñones", d:"Arroz salteado con mix de vegetales y champiñones, acompañado de papa criolla y ensalada de aguacate.", p:"$41.900"},
+  ]},
+
+  { id:"hamburguesas", title:"Hamburguesas", en:"Burgers · Al carbón", three:true, items:[
+    {n:"Sencilla", d:"200 gr carne, jamón, queso, vegetales frescos y papas a la francesa.", p:"$27.900"},
+    {n:"Mixta", d:"200 gr carne, 120 gr filete de pechuga, jamón, queso, vegetales frescos y papas a la francesa.", p:"$34.900"},
+    {n:"Doble carne", d:"Doble carne 200 gr, jamón, queso, vegetales frescos y papas a la francesa.", p:"$40.900"},
+  ]},
+
+  { id:"infantil", title:"Infantil", en:"Kids", items:[
+    {n:"Nuggets de pollo", d:"Con papas a la francesa.", p:"$22.900"},
+    {n:"Mini pechuga", d:"Con papas a la francesa.", p:"$22.900"},
+  ]},
+
+  { id:"postres", title:"Postres", en:"Desserts", items:[
+    {n:"Postre de temporada", d:"Pregunta por el postre del día.", p:"$15.900"},
+  ]},
+
+  { id:"adicionales", title:"Adicionales", en:"Additional", compact:true,
+    quote:"<span class='ag'>Tan <b>colombianísimo</b> como un tintico después del almuerzo</span>",
+    items:[
+    {n:"Papas a la francesa", p:"$14.900"},
+    {n:"Papa criolla", p:"$7.000"},
+    {n:"Yuca al vapor", p:"$6.000"},
+    {n:"Patacones", p:"$9.500"},
+    {n:"Arepa amarilla", p:"$7.000"},
+    {n:"Rellena", p:"$7.000"},
+    {n:"Chorizos (2 uds.)", p:"$12.900"},
+    {n:"Ensalada de aguacate", p:"$14.900"},
+    {n:"Pepitoria", p:"$14.900"},
+    {n:"Arroz blanco", p:"$5.000"},
+    {n:"Arroz de coco", p:"$7.000"},
+    {n:"Aguacate", p:"$7.000"},
+  ]},
+
+  { id:"bebidas", title:"Bebidas", en:"Drinks", groups:[
+    { label:"Jarras (para compartir)", rows:[
+      {n:"Jarra tinto de verano", s:"Vino joven, gaseosa de jengibre y zumo de lima (4 copas).", p:"$69.900"},
+      {n:"Jarra de refajo", s:"Refajo santandereano con guarapo de frutas y cola Hipinto.", p:"$26.900"},
+      {n:"Jarra guarapo de frutas", s:"Guarapo artesanal (6 porciones aprox.).", p:"$22.900"},
+      {n:"Jarra limonada de panela", s:"6 porciones aprox.", p:"$22.900"},
+    ]},
+    { label:"Refrescos & Sodas", rows:[
+      {n:"Sodas frutales", s:"Lulo, frutos rojos o frutos amarillos.", p:"$14.900"},
+      {n:"Soda Hatsu", p:"$7.900"},
+      {n:"Soda simple", p:"$6.000"},
+      {n:"Té Hatsu", p:"$11.900"},
+      {n:"Gaseosa PET 400", p:"$7.000"},
+      {n:"Agua Hatsu", p:"$7.000"},
+      {n:"Agua con gas", p:"$5.500"},
+    ]},
+    { label:"Cervezas", rows:[
+      {n:"Cerveza nacional", p:"$8.500"},
+      {n:"Cerveza importada", p:"$13.900"},
+    ]},
+    { label:"Café Don Elí", rows:[
+      {n:"Café Don Elí", s:"Especialidad, marca propia.", p:"$5.000"},
+    ]},
+  ]},
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function itemHTML(it){
+  const tag = it.tag ? ` <span class="tag">${esc(it.tag)}</span>` : "";
+  const desc = it.d ? `<p class="item-desc">${esc(it.d)}</p>` : "";
+  const price = it.p ? `<span class="dots"></span><span class="price">${esc(it.p)}</span>` : "";
+  const vars = it.vars ? `<div class="variants">${it.vars.map(v=>`<span class="variant">${esc(v.l)} <b>${esc(v.p)}</b></span>`).join("")}</div>` : "";
+  return `<article class="item">
+    <div class="item-head"><h3 class="item-name">${esc(it.n)}${tag}</h3>${price}</div>
+    ${desc}${vars}
+  </article>`;
+}
+
+function sectionHTML(sec){
+  let inner = "";
+  if(sec.compact){
+    inner = `<div class="compact">${sec.items.map(it=>
+      `<div class="crow"><span class="n">${esc(it.n)}</span><span class="d"></span><span class="p">${esc(it.p)}</span></div>`
+    ).join("")}</div>`;
+  } else if(sec.groups){
+    inner = `<div class="bev-groups">${sec.groups.map(g=>`
+      <div class="bev-group">
+        <h3>${esc(g.label)}</h3>
+        ${g.rows.map(r=>{
+          const sub=r.s?`<small>${esc(r.s)}</small>`:"";
+          return `<div class="bev-row"><span class="bn">${esc(r.n)}${sub}</span><span class="bd"></span><span class="bp">${esc(r.p)}</span></div>`;
+        }).join("")}
+      </div>`).join("")}</div>`;
+  } else {
+    const cols = sec.three ? "grid three" : "grid";
+    inner = `<div class="${cols}">${sec.items.map(itemHTML).join("")}</div>`;
+  }
+  const quote = sec.quote ? `<p class="quote">${sec.quote}</p>` : "";
+  const mini = (sec.items && sec.items.length<=2 && !sec.compact) ? " mini":"";
+  return `<section class="section" id="${sec.id}">
+    <div class="divider"><span class="cenefa"></span></div>
+    <div class="sec-head${mini}"><h2>${esc(sec.title)}</h2><span class="en">${esc(sec.en)}</span></div>
+    ${inner}${quote}
+  </section>`;
+}
+
+document.getElementById("menu").innerHTML = MENU.map(sectionHTML).join("");
+
+/* chips de navegación */
+const chipData = [{id:"inicio",l:"Inicio"}].concat(MENU.map(s=>({id:s.id,l:s.title}))).concat([{id:"info",l:"Info"}]);
+document.getElementById("chips").innerHTML = chipData.map(c=>`<a class="chip" href="#${c.id}" data-id="${c.id}">${esc(c.l)}</a>`).join("");
+
+/* enlaces */
+document.getElementById("wsp").href = CONFIG.whatsappUrl;
+document.getElementById("ig").href = CONFIG.instagram;
+document.getElementById("tt").href = CONFIG.tiktok;
+
+/* scrollspy: resalta el chip de la sección visible */
+const chips = [...document.querySelectorAll(".chip")];
+const targets = chipData.map(c=>document.getElementById(c.id)).filter(Boolean);
+const setActive = id => chips.forEach(ch=>ch.classList.toggle("active", ch.dataset.id===id));
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      setActive(e.target.id);
+      const chip = chips.find(c=>c.dataset.id===e.target.id);
+      if(chip) chip.scrollIntoView({block:"nearest",inline:"center",behavior:"smooth"});
+    }
+  });
+},{rootMargin:"-45% 0px -50% 0px",threshold:0});
+targets.forEach(t=>spy.observe(t));
+</script>
+</body>
+</html>
